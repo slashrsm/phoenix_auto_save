@@ -2,7 +2,6 @@ defmodule PhoenixAutoSaveWeb.PostController do
   use PhoenixAutoSaveWeb, :controller
 
   alias PhoenixAutoSave.Posts
-  alias PhoenixAutoSave.Posts.Post
 
   def index(conn, _params) do
     posts = Posts.list_posts()
@@ -10,20 +9,9 @@ defmodule PhoenixAutoSaveWeb.PostController do
   end
 
   def new(conn, _params) do
-    changeset = Posts.change_post(%Post{})
-    render(conn, "new.html", changeset: changeset)
-  end
-
-  def create(conn, %{"post" => post_params}) do
-    case Posts.create_post(post_params) do
-      {:ok, post} ->
-        conn
-        |> put_flash(:info, "Post created successfully.")
-        |> redirect(to: Routes.post_path(conn, :show, post))
-
-      {:error, %Ecto.Changeset{} = changeset} ->
-        render(conn, "new.html", changeset: changeset)
-    end
+    {:ok, post} = Posts.create_post(%{})
+    changeset = Posts.change_post(post)
+    render(conn, "new.html", changeset: changeset, post: post)
   end
 
   def show(conn, %{"id" => id}) do
