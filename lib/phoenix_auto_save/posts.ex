@@ -74,6 +74,14 @@ defmodule PhoenixAutoSave.Posts do
   end
 
   @doc """
+  Updates a post using a changeset.
+  """
+  def update_post(%Ecto.Changeset{} = changeset) do
+    changeset
+    |> Repo.update()
+  end
+
+  @doc """
   Deletes a post.
 
   ## Examples
@@ -98,7 +106,7 @@ defmodule PhoenixAutoSave.Posts do
       %Ecto.Changeset{source: %Post{}}
 
   """
-  def change_post(%Post{} = post) do
-    Post.changeset(post, %{})
+  def change_post(%Post{} = post, params \\ %{}) do
+    Post.changeset(post, params)
   end
 end
