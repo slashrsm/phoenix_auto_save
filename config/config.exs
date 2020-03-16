@@ -15,7 +15,10 @@ config :phoenix_auto_save, PhoenixAutoSaveWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "ZtlKBuH5weon1Ic0AdGZlYSPcQigivrAC9/Bq9JyxFsvH7VMRtrxAUo9EiPBInM5",
   render_errors: [view: PhoenixAutoSaveWeb.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: PhoenixAutoSave.PubSub, adapter: Phoenix.PubSub.PG2]
+  pubsub: [name: PhoenixAutoSave.PubSub, adapter: Phoenix.PubSub.PG2],
+  live_view: [
+    signing_salt: "CjOUihuEulErfiDeBsqrJ3MKyiw/iW7A"
+  ]
 
 # Configures Elixir's Logger
 config :logger, :console,
