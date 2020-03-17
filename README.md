@@ -2,6 +2,8 @@
 
 This is a demo project that showcases real-time auto save with [Phoenix LiveView](https://hex.pm/packages/phoenix_live_view). 
 
+Also see the [blog post](https://janezurevc.name/real-time-auto-save-phoenix-liveview).
+
 To start:
 
   * Install dependencies with `mix deps.get`
